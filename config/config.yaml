@@ -1,0 +1,8 @@
+name: example-config
+routers:
+  - path: "/name"
+    method: Get
+    body: |
+      {
+        "hello": "world"
+      }
