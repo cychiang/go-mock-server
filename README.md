@@ -8,6 +8,13 @@ Start the server as following
 go run cmd/main -config ${CONFIG_FILE_WITH_PATH}
 ```
 
+Or build the binary file: 
+
+```shell
+go build -o bin/main cmd/main.go
+go run bin/main -config ${CONFIG_FILE_WITH_PATH}
+```
+
 ## Configuration format
 The configuration file is in `yaml` format as following:
 

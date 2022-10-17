@@ -6,7 +6,9 @@ type Config struct {
 }
 
 type Router struct {
-	Path   string
-	Method string
-	Body   string
+	Path        string
+	Method      string
+	ContentType string
+	StatusCode  int
+	Body        string
 }

@@ -1,7 +1,9 @@
 name: example-config
 routers:
-  - path: "/name"
+  - path: /name
     method: Get
+    contentType: application/json
+    statusCode: 200
     body: |
       {
         "hello": "world"

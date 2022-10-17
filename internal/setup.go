@@ -2,7 +2,6 @@ package internal
 
 import (
 	"github.com/gin-gonic/gin"
-	"net/http"
 	"strings"
 )
 
@@ -13,12 +12,16 @@ func SetupRouter(conf *Config) *gin.Engine {
 }
 
 func initRouters(r *gin.Engine, conf *Config) {
-	for _, router := range conf.Routers {
-		switch strings.ToLower(router.Method) {
+	for _, rt := range conf.Routers {
+		switch strings.ToLower(rt.Method) {
 		case "get":
-			r.GET(router.Path, func(c *gin.Context) {
-				c.Data(http.StatusOK, "application/json", []byte(router.Body))
-			})
+			initGet(r, &rt)
 		}
 	}
+}
+
+func initGet(r *gin.Engine, rt *Router) {
+	r.GET(rt.Path, func(c *gin.Context) {
+		c.Data(rt.StatusCode, rt.ContentType, []byte(rt.Body))
+	})
 }
