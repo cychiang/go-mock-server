@@ -16,12 +16,20 @@ func initRouters(r *gin.Engine, conf *Config) {
 		switch strings.ToLower(rt.Method) {
 		case "get":
 			initGet(r, &rt)
+		case "post":
+			initPost(r, &rt)
 		}
 	}
 }
 
 func initGet(r *gin.Engine, rt *Router) {
 	r.GET(rt.Path, func(c *gin.Context) {
+		c.Data(rt.StatusCode, rt.ContentType, []byte(rt.Body))
+	})
+}
+
+func initPost(r *gin.Engine, rt *Router) {
+	r.POST(rt.Path, func(c *gin.Context) {
 		c.Data(rt.StatusCode, rt.ContentType, []byte(rt.Body))
 	})
 }

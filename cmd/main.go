@@ -2,6 +2,7 @@ package main
 
 import (
 	"flag"
+	"fmt"
 	"github.com/cychiang/go-mock-server/internal"
 	"gopkg.in/yaml.v3"
 	"log"
@@ -34,7 +35,7 @@ func init() {
 
 func main() {
 	r := internal.SetupRouter(&conf)
-	err := r.Run(":8080")
+	err := r.Run(fmt.Sprintf(":%s", conf.Port))
 	if err != nil {
 		return
 	}

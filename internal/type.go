@@ -2,6 +2,7 @@ package internal
 
 type Config struct {
 	Name    string
+	Port    string
 	Routers []Router
 }
 

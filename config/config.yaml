@@ -1,5 +1,14 @@
 name: example-config
+port: "8080"
 routers:
+  - path: /name/data
+    method: Post
+    contentType: application/json
+    statusCode: 200
+    body: |
+      {
+        "hello": "from post"
+      }
   - path: /name
     method: Get
     contentType: application/json
